@@ -43,6 +43,6 @@ model.clm2 <- clm(samped2[, 1], samped2[, 2:5])
 summary.clm(model.clm2)
 
 #clm2SA <- sum(abs(samped2[, 1] - mean(samped[, 1])))
-#clm2SR <- sum(abs(samped2[, 1] - model.clm2$coefficients %*% t(samped2[, 2:5])))
+#clm2SR <- sum(abs(samped2[, 1] - model.clm2$coefficients[1:2] %*% t(samped2[, 2:3])))
 
 # might be worth looking into some sort of R squared

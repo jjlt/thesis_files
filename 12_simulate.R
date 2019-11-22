@@ -5,7 +5,7 @@
   # we might just try and skip that and say it is a consistent estimator
   # and judging by the sample size of the wind data, it shouldn't be too big
   # of a problem.
-  # We want to do significance tests
+  # We want to do significance tests and maybe regions.
 
 # Headers -----------------------------------------------------------------
 
@@ -13,6 +13,7 @@ rm(list = ls())
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source('simulation_headers.R')
 library(mvtnorm)
+library(conics)
 
 # Steps -------------------------------------------------------------------
 
@@ -64,6 +65,14 @@ M %*% V_half %*% beta_gls_aug
 
 # how can you do join then?
 # if A and B are true, A union B
+
+# confidence regions should be similar to that in multivariate
+# 
+# v<-c(64/15,-32/15,64/15,(16/15)*(2*4.7-8*1.5),
+#      (16/15)*(2*1.5-8*4.7),(16/15)*(4*1.5^2-2*1.5*4.7+4*4.7^2)
+#      -qchisq(0.9,2))
+# conicPlot(v, xlab = "x1", ylab = "x2",ylim = c(0,8),xlim = c(0,8))
+# find a way to pass complex numbers and the gamma estimate transformed
 
 n <- 500
 real_eps <- rnorm(n, mean = 1, sd = 1)
